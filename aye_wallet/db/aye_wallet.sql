@@ -8,7 +8,8 @@ CREATE TABLE tags (
 
 CREATE TABLE transactions (
   id SERIAL4 PRIMARY KEY,
-  value NUMERIC NOT NULL PRICE (value > 0),
+  item VARCHAR(255),
+  value NUMERIC NOT NULL CHECK (value > 0),
   merchant VARCHAR(255),
   tag_id INT4 REFERENCES tags(id) ON DELETE CASCADE
 );
