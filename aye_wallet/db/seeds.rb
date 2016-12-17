@@ -3,6 +3,9 @@ require_relative('../models/transaction')
 require_relative('../models/user')
 require ('pry')
 
+Tag.delete_all()
+Transaction.delete_all()
+
 user = User.new({ "budget" => 500 })
 
 tag01 = Tag.new({"category" => "food"})
