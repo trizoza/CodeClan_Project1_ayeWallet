@@ -3,25 +3,22 @@
 <form action="/transactions/<%= @transaction.id %>" method="post">
   <label>
     Item
-    <br>
+
     <input type="text" name="item" value="<%= @transaction.item %>"/>
   </label>
-  <br>
   <label>
     Value
-    <br>
+
     <input type="text" name="value" value="<%= @transaction.value %>" />
   </label>
-  <br>
   <label>
     Merchant:
-    <br>
+
     <input type="text" name="merchant" value="<%= @transaction.merchant %>"/>
   </label>
-  <br>
   <label>
     Select category:
-    <br>
+      <% @tags.sort! { |tag1, tag2| tag1.id <=> tag2.id } %>
       <select name="tag_id">
       <% for tag in @tags %>
           <option <%= "selected" if @transaction.tag_id == tag.id %> value = <%= tag.id %> > <%= tag.category %> </option>

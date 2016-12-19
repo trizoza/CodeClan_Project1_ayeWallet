@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ayeWallet</title>
-  <link rel="icon" href="/images/ayeWallet_icon.png" />
-  <link rel="stylesheet" type="text/css" href="/style.css">
+  <title>ayeWALLET</title>
+  <link href="/images/ayeWallet_icon.png" rel="icon">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+  <link href="/style.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
-  <header>
-    <a href="/"><h1>ayeWallet</h1></a>
-    <p>Personal Cash Tracker</p>
+  <header class="header">
+    <div class="inside_header">
+      <a href="/"><img src="/images/ayeWallet_icon.png" alt="coin"></a>
+      <div class="heading1">
+        <a href="/"><h1>ayeWALLET</h1></a>
+      </div>
+      <div class="heading2">
+        <h2>Personal Cash Tracker</h2>
+      </div>
+    </div>
   </header>
-  <nav>
-    <ul>
-      <li><a href="/">Home</a>
-      <li><a href="/transactions">Transactions</a>
-      <li><a href="/account">Account</a>
-    </ul>
+  <nav class="nav">
+    <div class="inside_nav">
+      <ul>
+        <li><a href="/">HOME</a></li>
+        <li><a href="/transactions">TRANSACTIONS</a></li>
+        <li><a href="/account">ACCOUNT</a></li>
+      </ul>
+    </div>
   </nav>
+  <div class="big-block">
+  </div>
  
-
-  <section>
+  <section class="main_section">
   <%= yield %>
   </section>
 
+  <footer>
+  </footer>
 </body>
 </html>

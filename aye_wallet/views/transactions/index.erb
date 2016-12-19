@@ -1,22 +1,44 @@
-<h1>All transactions:</h1>
-
-<p> Transactions: </p>
 <a href="/transactions/new">Add transaction</a>
 
-<% for transaction in @transactions %>
-  <p>
-    Item: <%= transaction.item %> 
-    Merchant: <%= transaction.merchant %> 
-    Value: <%= transaction.value.round(2) %> $ 
-    Category: <%= transaction.tag().category %>
-    <form action="/transactions/<%= transaction.id %>" method="GET">
-      <input type="submit" value="SHOW" />
-    </form>
-    <form action="/transactions/<%= transaction.id %>/edit" method="GET">
-      <input type="submit" value="EDIT" />
-    </form>
-    <form action="/transactions/<%= transaction.id %>/delete" method="POST">
-      <input type="submit" value="DELETE" />
-    </form>
-  </p>
-<% end %>
+<table>
+  <caption>Transactions:</caption>
+  <thead>
+    <tr>
+      <th scope=”col”>ID</th>
+      <th scope=”col”>Item</th>
+      <th scope=”col”>Merchant</th>
+      <th scope=”col”>Value</th>
+      <th scope=”col”>Category</th>
+      <th scope=”col”>Show</th>
+      <th scope=”col”>Edit</th>
+      <th scope=”col”>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.sort! { |transaction1, transaction2| transaction2.id <=> transaction1.id } %>
+    <% for transaction in @transactions %>
+    <tr>
+      <th scope=”row”><%= transaction.id %></th>
+      <td><%= transaction.item %></td>
+      <td><%= transaction.merchant %></td>
+      <td>$ <%= transaction.value.round(2) %></td>
+      <td><%= transaction.tag().category %></td>
+      <td>
+        <form action="/transactions/<%= transaction.id %>" method="GET">
+          <input type="submit" value="SHOW" />
+        </form>
+      </td>
+      <td>
+        <form action="/transactions/<%= transaction.id %>/edit" method="GET">
+          <input type="submit" value="EDIT" />
+        </form>
+      </td>
+      <td>
+        <form action="/transactions/<%= transaction.id %>/delete" method="POST">
+          <input type="submit" value="DELETE" />
+        </form>
+      </td>
+    </tr>
+    <% end %> 
+  </tbody>
+</table>

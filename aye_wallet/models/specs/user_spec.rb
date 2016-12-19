@@ -11,4 +11,9 @@ class UserSpec < MiniTest::Test
     assert_equal(500, @user.budget())
   end
 
+  def test_set_budget()
+    @user.set_budget(300)
+    assert_equal(300, @user.budget)
+  end
+
 end

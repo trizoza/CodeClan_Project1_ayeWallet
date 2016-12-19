@@ -1,11 +1,6 @@
 <h1>Edit tag</h1>
 
 <form action="/account/<%= @tag.id %>" method="post">
-  <label>
-    Category
-    <br>
-    <input type="text" name="category" value="<%= @tag.category %>"/>
-  </label>
-
+  <label> Category <input type="text" name="category" value="<%= @tag.category %>"/> </label>
   <input type="submit" value="Edit category">
 </form>

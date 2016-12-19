@@ -23,6 +23,7 @@
     <label>
       Category:
       <br>
+      <% @tags.sort! { |tag1, tag2| tag1.id <=> tag2.id } %>
       <select name="tag_id">
         <% for tag in @tags %>
             <option value = <%= tag.id %> > <%= tag.category %> </option>

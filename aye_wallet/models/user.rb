@@ -6,4 +6,8 @@ class User
     @budget = options['budget'].to_f
   end
 
+  def set_budget( value )
+    @budget = value
+  end
+
 end
