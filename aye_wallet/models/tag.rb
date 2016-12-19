@@ -32,17 +32,6 @@ class Tag
     SqlRunner.run( sql )
   end
 
-
-
-
-
-
-
-
-
-
-
-
   def self.get_many( sql )
     return SqlRunner.run( sql ).map { |tag| Tag.new(tag) }
   end

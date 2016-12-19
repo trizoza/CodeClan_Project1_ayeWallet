@@ -6,8 +6,6 @@ require ('pry')
 Tag.delete_all()
 Transaction.delete_all()
 
-user = User.new({ "budget" => 500 })
-
 tag01 = Tag.new({"category" => "food"})
 tag01.save()
 tag02 = Tag.new({"category" => "travel"})

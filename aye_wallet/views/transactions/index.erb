@@ -1,0 +1,23 @@
+<a href="/">Home</a>
+<h1>All transactions:</h1>
+<p> Monthly budget is set to: <%= @user.budget %> $ </p>
+<p> Total value of all transactions is: <%= @total_spent.round(2) %> $ </p>
+<p> Transactions: </p>
+<a href="/transactions/new">Add transaction</a>
+<% for transaction in @transactions %>
+  <p>
+    Item: <%= transaction.item %> 
+    Merchant: <%= transaction.merchant %> 
+    Value: <%= transaction.value.round(2) %> $ 
+    Category: <%= transaction.tag().category %>
+    <form action="/transactions/<%= transaction.id %>" method="GET">
+      <input type="submit" value="SHOW" />
+    </form>
+    <form action="/transactions/<%= transaction.id %>/edit" method="GET">
+      <input type="submit" value="EDIT" />
+    </form>
+    <form action="/transactions/<%= transaction.id %>/delete" method="POST">
+      <input type="submit" value="DELETE" />
+    </form>
+  </p>
+<% end %>

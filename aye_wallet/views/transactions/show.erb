@@ -1,0 +1,8 @@
+<h1>Transaction details</h1>
+<p>
+  Item: <%= @transaction.item %>
+  Value: <%= @transaction.value %>
+  Merchant: <%= @transaction.merchant %>
+  Tag: <%= @transaction.tag().category %>
+</p>
+<a href="/transactions">Back to all transactions</a>
