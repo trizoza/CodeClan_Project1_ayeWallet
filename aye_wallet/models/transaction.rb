@@ -32,20 +32,21 @@ class Transaction
 
   def self.total_spent()
     sql = "
-      SELECT value FROM transactions;
+      SELECT * FROM transactions;
     "
     total_spent = SqlRunner.run( sql ).map { |transaction| Transaction.new(transaction).value }
     total_spent = total_spent.inject(:+)
-    return total_spent
+    return total_spent.to_f
   end
 
   def self.total_spent_by_tag(id)
     sql = "
-      SELECT value FROM transactions
+      SELECT * FROM transactions
       WHERE tag_id = #{id};
     "
     total_spent_by_tag = SqlRunner.run( sql ).map { |transaction| Transaction.new(transaction).value }
     total_spent_by_tag = total_spent_by_tag.inject(:+)
+    return total_spent_by_tag.to_f
   end
 
   def tag()

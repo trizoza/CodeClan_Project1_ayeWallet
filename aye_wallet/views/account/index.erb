@@ -1,0 +1,14 @@
+<p> Monthly budget is set to: <%= @user.budget %> $ </p>
+<p> Total value of all transactions is: <%= @total_spent.round(2) %> $ </p>
+
+<form action="/account/new" method="GET">
+  <input type="submit" value="ADD CATEGORY" />
+</form>
+
+<% for tag in @tags %>
+  <p> <%= tag.category %> </p>
+  <p> <%= tag.id %> </p>
+  <form action="/account/<%= tag.id %>/edit" method="GET">
+    <input type="submit" value="EDIT" />
+  </form>
+<% end %>

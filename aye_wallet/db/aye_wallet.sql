@@ -13,3 +13,19 @@ CREATE TABLE transactions (
   merchant VARCHAR(255),
   tag_id INT4 REFERENCES tags(id) ON DELETE CASCADE
 );
+
+INSERT INTO tags (category) VALUES ('food');
+INSERT INTO tags (category) VALUES ('clothing');
+INSERT INTO tags (category) VALUES ('sport');
+INSERT INTO tags (category) VALUES ('culture');
+INSERT INTO tags (category) VALUES ('travel');
+INSERT INTO tags (category) VALUES ('electronics');
+INSERT INTO tags (category) VALUES ('household');
+INSERT INTO tags (category) VALUES ('car');
+INSERT INTO tags (category) VALUES ('entertainment');
+INSERT INTO tags (category) VALUES ('family');
+INSERT INTO tags (category) VALUES ('friends');
+INSERT INTO tags (category) VALUES ('presents');
+INSERT INTO tags (category) VALUES ('health care');
+INSERT INTO tags (category) VALUES ('monthly regulars');
+INSERT INTO tags (category) VALUES ('other');
