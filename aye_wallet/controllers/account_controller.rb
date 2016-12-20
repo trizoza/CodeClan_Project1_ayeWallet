@@ -13,9 +13,24 @@ get '/account' do
   @total_spent = Transaction.total_spent()
   if params[:tag_id]
     @total_spent_by_tag = Transaction.total_spent_by_tag( params[:tag_id] )
-    @selected_tag = Tag.find(params[:tag_id])
+    @selected_tag = Tag.find(params[:tag_id]) 
   end
   erb ( :"account/index" )
+end
+
+################# EDIT BUDGET ############################################
+
+get '/account/edit' do
+  @user = User.find(1)
+  @budget = User.check_budget()
+  erb( :"account/edit" )
+end
+
+################# UPDATE EDITED BUDGET ############################################
+
+post '/account' do
+  User.update_budget( params )
+  redirect to( "/account" )
 end
 
 ############### SHOW CATEGORIES ##########################################
