@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS transactions;
 DROP TABLE IF EXISTS tags;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE tags (
   id SERIAL4 PRIMARY KEY,
@@ -14,6 +15,12 @@ CREATE TABLE transactions (
   tag_id INT4 REFERENCES tags(id) ON DELETE CASCADE
 );
 
+CREATE TABLE users (
+  id SERIAL4 PRIMARY KEY,
+  budget NUMERIC
+);
+
+INSERT INTO users (budget) VALUES (500);
 INSERT INTO tags (category) VALUES ('food');
 INSERT INTO tags (category) VALUES ('clothing');
 INSERT INTO tags (category) VALUES ('sport');

@@ -7,7 +7,6 @@ require_relative( '../models/user.rb' )
 ############ SHOW TRANSACTIONS ################################
 
 get '/transactions' do
-  @user = User.new({ "budget" => 500 })
   @transactions = Transaction.all()
   @total_spent = Transaction.total_spent()
   erb ( :"transactions/index" )

@@ -1,7 +1,15 @@
-<p> Monthly budget is set to <%= @user.budget %> $. </p>
+<h1>Account</h1>
+<br>
+<p> Monthly budget is set to <%= @budget %> $. </p>
+<br>
 <p> Total value of all transactions is <%= @total_spent.round(2) %> $. </p>
 
+<br>
+
+
+
 <p> Check spending by category: </p>
+<br>
 <form action="/account" method="get">
   <select name="tag_id">
     <% @tags.sort! { |tag1, tag2| tag1.id <=> tag2.id } %>
@@ -11,10 +19,11 @@
   </select>
   <input class="btn" type="submit" value="Check category">
 </form>
-<% if @selected_tag %> 
+<% if @selected_tag %>
+  <br> 
   <p> 
   You have spent <%= @total_spent_by_tag %> $ on <%= @selected_tag.category %>. 
-  </p>   
+  </p>
 <% end %>
-
+<br>
 <a href="/account/tags">Edit categories</a>

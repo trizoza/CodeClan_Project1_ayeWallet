@@ -8,7 +8,7 @@ require_relative( '../models/user.rb' )
 ############### SHOW ACCOUNT DETAILS ####################################
 
 get '/account' do
-  @user = User.new({ "budget" => 500 })
+  @budget = User.check_budget()
   @tags = Tag.all()
   @total_spent = Transaction.total_spent()
   if params[:tag_id]

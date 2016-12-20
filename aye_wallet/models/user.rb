@@ -1,3 +1,5 @@
+require_relative ('../db/sql_runner')
+
 class User
 
   attr_accessor :budget
@@ -6,8 +8,11 @@ class User
     @budget = options['budget'].to_f
   end
 
-  def set_budget( value )
-    @budget = value
+  def self.check_budget()
+    sql = "
+      SELECT * FROM users;
+    "
+    return SqlRunner.run( sql )[0]['budget'].to_f
   end
 
 end
