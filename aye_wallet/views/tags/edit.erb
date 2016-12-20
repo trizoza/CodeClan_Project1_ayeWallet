@@ -1,6 +1,10 @@
 <h1>Edit tag</h1>
-
+<br>
 <form action="/account/tags/<%= @tag.id %>" method="post">
-  <label> Category <input class="btn"  type="text" name="category" value="<%= @tag.category %>"/> </label>
+  <label> 
+    Category <input class="btn"  type="text" name="category" value="<%= @tag.category %>"/> 
+  </label>
   <input class="btn" type="submit" value="Edit category">
 </form>
+<br>
+<a href="/account/tags">Back to categories</a>

@@ -3,13 +3,31 @@
 <div>
   <form action="/transactions" method="post">
     <label>
+      Year:
+      <br>
+      <input class="btn"  type="number" name="year"/>
+    </label>
+    <br>
+    <label>
+      Month:
+      <br>
+      <input class="btn"  type="number" name="month"/>
+    </label>
+    <br>
+    <label>
+      Day:
+      <br>
+      <input class="btn"  type="number" name="day"/>
+    </label>
+    <br>
+    <label>
       Item:
       <br>
       <input class="btn"  type="text" name="item"/>
     </label>
     <br>
     <label>
-      Value:
+      Value $:
       <br>
       <input class="btn"  type="text" name="value"/>
     </label>
@@ -35,3 +53,5 @@
     <input class="btn" type="submit" value="Add transaction">
   </form>
 </div>
+<br>
+<a href="/transactions">Back to all transactions</a>

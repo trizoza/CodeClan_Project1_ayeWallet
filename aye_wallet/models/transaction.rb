@@ -5,7 +5,7 @@ require_relative ('tag')
 class Transaction
 
   attr_reader :id, :tag_id
-  attr_accessor :item, :value, :merchant
+  attr_accessor :item, :value, :merchant, :year, :month, :day
 
   def initialize( options )
     @id = options['id'].to_i unless options['id'].nil?
@@ -13,11 +13,14 @@ class Transaction
     @value = options['value'].to_f
     @merchant = options['merchant']
     @tag_id = options['tag_id'].to_i
+    @year = options['year'].to_i
+    @month = options['month'].to_i
+    @day = options['day'].to_i
   end
 
   def save()
     sql = "
-      INSERT INTO transactions (item, value, merchant, tag_id) VALUES ('#{@item}', #{@value}, '#{@merchant}', #{@tag_id})
+      INSERT INTO transactions (item, value, merchant, tag_id, year, month, day) VALUES ('#{@item}', #{@value}, '#{@merchant}', #{@tag_id}, #{@year}, #{@month}, #{@day})
       RETURNING *;
       "
     @id = SqlRunner.run( sql )[0]['id'].to_i
@@ -37,6 +40,16 @@ class Transaction
     total_spent = SqlRunner.run( sql ).map { |transaction| Transaction.new(transaction).value }
     total_spent = total_spent.inject(:+)
     return total_spent.to_f
+  end
+
+  def self.total_spent_by_month(month)
+    sql = "
+      SELECT * FROM transactions
+      WHERE month = #{month};
+    "
+    total_spent_by_month = SqlRunner.run( sql ).map { |transaction| Transaction.new(transaction).value }
+    total_spent_by_month = total_spent_by_month.inject(:+)
+    return total_spent_by_month.to_f
   end
 
   def self.total_spent_by_tag(id)
@@ -86,7 +99,10 @@ class Transaction
       item='#{options['item']}',
       value='#{options['value']}',
       merchant='#{options['merchant']}',
-      tag_id='#{options['tag_id']}'
+      tag_id='#{options['tag_id']}',
+      year='#{options['year']}',
+      month='#{options['month']}',
+      day='#{options['day']}'
       WHERE id='#{options['id']}';
       "
     SqlRunner.run( sql )

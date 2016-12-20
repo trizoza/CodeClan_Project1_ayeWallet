@@ -2,6 +2,24 @@
 
 <form action="/transactions/<%= @transaction.id %>" method="post">
   <label>
+    Year:
+    <br>
+    <input class="btn"  type="number" name="year" value="<%= @transaction.year %>"/>
+  </label>
+  <br>
+  <label>
+    Month:
+    <br>
+    <input class="btn"  type="number" name="month" value="<%= @transaction.month %>"/>
+  </label>
+  <br>
+  <label>
+    Day:
+    <br>
+    <input class="btn"  type="number" name="day" value="<%= @transaction.day %>"/>
+  </label>
+  <br>
+  <label>
     Item:
     <br>
     <input class="btn" type="text" name="item" value="<%= @transaction.item %>"/>
@@ -33,3 +51,5 @@
   <br>
   <input class="btn" type="submit" value="Update transaction">
 </form>
+<br>
+<a href="/transactions">Back to all transactions</a>

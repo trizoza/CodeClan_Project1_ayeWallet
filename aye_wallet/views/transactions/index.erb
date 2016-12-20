@@ -10,7 +10,7 @@
 <table>
   <thead>
     <tr>
-      <th scope=”col”>ID</th>
+      <th scope=”col”>Date</th>
       <th scope=”col”>Item</th>
       <th scope=”col”>Merchant</th>
       <th scope=”col”>Value</th>
@@ -21,10 +21,10 @@
     </tr>
   </thead>
   <tbody>
-    <% @transactions.sort! { |transaction1, transaction2| transaction2.id <=> transaction1.id } %>
+    <% @transactions.sort! { |transaction1, transaction2| [ transaction2.year, transaction2.month, transaction2.day ] <=> [ transaction1.year, transaction1.month, transaction1.day ] } %>
     <% for transaction in @transactions %>
     <tr>
-      <th scope=”row”><%= transaction.id %></th>
+      <th scope=”row”><%= transaction.year %>/<%= transaction.month %>/<%= transaction.day %></th>
       <td><%= transaction.item %></td>
       <td><%= transaction.merchant %></td>
       <td>$ <%= "%.2f" % transaction.value.round(2) %></td>

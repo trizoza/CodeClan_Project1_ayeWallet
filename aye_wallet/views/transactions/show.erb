@@ -1,7 +1,7 @@
 <h1>Transaction details</h1>
 <br>
 <p>
-  ID: <%= @transaction.id %> <br>
+  Date: <%= @transaction.year %>/<%= @transaction.month %>/<%= @transaction.day %> <br>
   Item: <%= @transaction.item %> <br>
   Value: <%= "%.2f" % @transaction.value %> <br>
   Merchant: <%= @transaction.merchant %> <br>

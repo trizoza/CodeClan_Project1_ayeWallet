@@ -12,7 +12,10 @@ CREATE TABLE transactions (
   item VARCHAR(255),
   value NUMERIC NOT NULL CHECK (value > 0),
   merchant VARCHAR(255),
-  tag_id INT4 REFERENCES tags(id) ON DELETE CASCADE
+  tag_id INT4 REFERENCES tags(id) ON DELETE CASCADE,
+  year INT2,
+  month INT2,
+  day INT2
 );
 
 CREATE TABLE users (
@@ -21,6 +24,7 @@ CREATE TABLE users (
 );
 
 INSERT INTO users (budget) VALUES (500);
+
 INSERT INTO tags (category) VALUES ('food');
 INSERT INTO tags (category) VALUES ('clothing');
 INSERT INTO tags (category) VALUES ('sport');
