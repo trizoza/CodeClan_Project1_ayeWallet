@@ -1,0 +1,26 @@
+<h2> Category management </h2>
+<a href='/account/tags/new'>Add new category</a>
+
+<table>
+  <thead>
+    <tr>
+      <th scope=”col”>ID</th>
+      <th scope=”col”>Category</th>
+      <th scope=”col”>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tags.sort! { |tag1, tag2| tag1.id <=> tag2.id } %>
+    <% for tag in @tags %>
+    <tr>
+      <th scope=”row”><%= tag.id %></th>
+      <td><%= tag.category %></td>
+      <td>
+        <form action="/account/tags/<%= tag.id %>/edit" method="get">
+          <input class="btn" type="submit" value="edit" />
+        </form>
+      </td>
+    </tr>
+    <% end %> 
+  </tbody>
+</table>

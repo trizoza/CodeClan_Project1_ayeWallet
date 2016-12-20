@@ -9,7 +9,7 @@
         <option value = <%= tag.id %> > <%= tag.category %> </option>
     <% end %>
   </select>
-  <input type="submit" value="Check category">
+  <input class="btn" type="submit" value="Check category">
 </form>
 <% if @selected_tag %> 
   <p> 
@@ -17,30 +17,4 @@
   </p>   
 <% end %>
 
-<h2> Category management </h2>
-<a href='/account/new'>Add new category</a>
-
-<table>
-  <caption>Category tags</caption>
-  <thead>
-    <tr>
-      <th scope=”col”>ID</th>
-      <th scope=”col”>Category</th>
-    </tr>
-  </thead>
-  
-  <tbody>
-    <% @tags.sort! { |tag1, tag2| tag1.id <=> tag2.id } %>
-    <% for tag in @tags %>
-    <tr>
-      <th scope=”row”><%= tag.id %></th>
-      <td><%= tag.category %></td>
-      <td>
-        <form action="/account/<%= tag.id %>/edit" method="get">
-          <input type="submit" value="edit" />
-        </form>
-      </td>
-    </tr>
-    <% end %> 
-  </tbody>
-</table>
+<a href="/account/tags">Edit categories</a>

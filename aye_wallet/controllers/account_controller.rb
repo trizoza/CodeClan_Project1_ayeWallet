@@ -18,33 +18,40 @@ get '/account' do
   erb ( :"account/index" )
 end
 
+############### SHOW CATEGORIES ##########################################
+
+get '/account/tags' do
+  @tags = Tag.all()
+  erb ( :"tags/index" )
+end
+
 ############ ADD NEW TAG #################################################
 
-get '/account/new' do
+get '/account/tags/new' do
   @tags = Tag.all()
-  erb ( :"account/new" )
+  erb ( :"tags/new" )
 end
 
 ############ SAVE NEW TAG #################################################
 
-post '/account' do
+post '/account/tags' do
   tag = Tag.new(params)
   tag.save()
-  redirect to( "/account" )
+  redirect to( "/account/tags" )
 end
 
 ############ EDIT TAG #################################################
 
-get '/account/:id/edit' do
+get '/account/tags/:id/edit' do
   id = params[:id].to_i
   @tag = Tag.find( id )
   @tags = Tag.all()
-  erb( :"account/edit" )
+  erb( :"tags/edit" )
 end
 
 ############ SAVE EDITED TAG #################################################
 
-post '/account/:id' do
+post '/account/tags/:id' do
   Tag.update( params )
-  redirect to( "/account" )
+  redirect to( "/account/tags" )
 end
