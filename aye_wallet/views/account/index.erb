@@ -2,16 +2,22 @@
 <br>
 <p> Monthly budget is set to <%= "%.2f" % @budget %> $. </p>
 <br>
-<p> Total value of all transactions is <%= @total_spent.round(2) %> $. </p>
+<p> Total value of all transactions is <%= "%.2f" % @total_spent.round(2) %> $. </p>
 <br>
   <% budget_use = @total_spent.to_f / @budget.to_f * 100 %>
-  <p> You have spent <%= budget_use.round(0) %>% of budget.</p>
+  <% if budget_use < 100 %>
+    <p>You have spent <%= budget_use.round(0) %>% of budget.</p>
+  <% else %>
+    <p id="warning"> You have exceeded the budget by <%= -(100 - budget_use.round(0)) %>% !</p>
+  <% end %>
 <br>
 
 <p> BUDGET BAR </p>
 <br>
 <div style="display: block; width: 100%; height: 30px; background-color: white; border-radius: 15px;">
-    <div style="display: block; width: <%= budget_use.round(0) %>%; height: 30px; border-radius: 15px; background-color: 
+    <div style="display: block; width: 
+    <%= budget_use.round(0) < 101 ? budget_use.round(0) : 100 %>%;
+    height: 30px; border-radius: 15px; background-color: 
     <%= "lightgreen" if budget_use.round(0) <= 50 %>
     <%= "orange" if budget_use.round(0) <= 90 && budget_use.round(0) > 50 %>
     <%= "red" if budget_use.round(0) > 90 %>
@@ -38,7 +44,7 @@
 <% if @selected_tag %>
   <br> 
   <p> 
-    You have spent <%= @total_spent_by_tag %> $ on <%= @selected_tag.category %>.
+    You have spent <%= "%.2f" % @total_spent_by_tag %> $ on <%= @selected_tag.category %>.
 
   </p>
 <% end %>

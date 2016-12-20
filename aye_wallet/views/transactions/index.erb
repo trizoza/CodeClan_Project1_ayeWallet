@@ -27,7 +27,7 @@
       <th scope=”row”><%= transaction.id %></th>
       <td><%= transaction.item %></td>
       <td><%= transaction.merchant %></td>
-      <td>$ <%= transaction.value.round(2) %></td>
+      <td>$ <%= "%.2f" % transaction.value.round(2) %></td>
       <td><%= transaction.tag().category %></td>
       <td>
         <form action="/transactions/<%= transaction.id %>" method="GET">

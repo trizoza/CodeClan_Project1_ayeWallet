@@ -13,8 +13,20 @@ transaction03 = Transaction.new({ "item" => "pizza", "merchant" => "Dominos", "v
 transaction03.save()
 transaction04 = Transaction.new({ "item" => "Christmas presents", "merchant" => "Amazon", "value" => 30, "tag_id" => 12 })
 transaction04.save()
-transaction05 = Transaction.new({ "item" => "jumper", "merchant" => "Primark", "value" => 8.49, "tag_id" => 2 })
+transaction05 = Transaction.new({ "item" => "ping pong racket", "merchant" => "SportsDirect", "value" => 12.99, "tag_id" => 3 })
 transaction05.save()
+transaction06 = Transaction.new({ "item" => "jumper", "merchant" => "Primark", "value" => 8.49, "tag_id" => 2 })
+transaction06.save()
+transaction07 = Transaction.new({ "item" => "gas", "merchant" => "BP", "value" => 40, "tag_id" => 8 })
+transaction07.save()
+transaction08 = Transaction.new({ "item" => "dinner", "merchant" => "McDonalds", "value" => 5.49, "tag_id" => 1 })
+transaction08.save()
+transaction09 = Transaction.new({ "item" => "coffee", "merchant" => "CodeBase", "value" => 2.6, "tag_id" => 1 })
+transaction09.save()
+transaction10 = Transaction.new({ "item" => "internet", "merchant" => "PlusNet", "value" => 17.99, "tag_id" => 14 })
+transaction10.save()
+transaction11 = Transaction.new({ "item" => "Xbox", "merchant" => "Trevies Tellies", "value" => 150, "tag_id" => 6 })
+transaction11.save()
 
 binding.pry
 nil

@@ -3,7 +3,7 @@
 <p>
   ID: <%= @transaction.id %> <br>
   Item: <%= @transaction.item %> <br>
-  Value: <%= @transaction.value %> <br>
+  Value: <%= "%.2f" % @transaction.value %> <br>
   Merchant: <%= @transaction.merchant %> <br>
   Tag: <%= @transaction.tag().category %> <br>
 </p>
