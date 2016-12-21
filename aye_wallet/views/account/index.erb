@@ -48,10 +48,9 @@
     %>.
   </p>
   <% if @total_spent_by_month > 0 %>
-    <br>
       <% budget_use = @total_spent_by_month.to_f / @budget.to_f * 100 %>
       <% if budget_use < 100 %>
-        <p>You have spent <%= budget_use.round(0) %>% of budget.</p>
+        <p>Which is <%= budget_use.round(0) %>% of monthly budget.</p>
       <% else %>
         <p id="warning"> You have exceeded the budget by <%= -(100 - budget_use.round(0)) %>% !</p>
       <% end %>
@@ -69,28 +68,9 @@
           <p class="percentage"> <%= budget_use.round(0) %>% </p>
         </div>
     </div>
-    
+    <br>
   <% end %>
 <% end %>
-<!-- <br>
-<p> Check spending by category: </p>
-<br>
-<form action="/account" method="get">
-  <select name="tag_id">
-    <% @tags.sort! { |tag1, tag2| tag1.id <=> tag2.id } %>
-    <% for tag in @tags %>
-        <option value = <%= tag.id %> > <%= tag.category %> </option>
-    <% end %>
-  </select>
-  <input class="btn" type="submit" value="Check category">
-</form>
-<% if @selected_tag %>
-  <br> 
-  <p> 
-    You have spent <%= "%.2f" % @total_spent_by_tag %> $ on <%= @selected_tag.category %>.
-  </p>
-<% end %>
-<br> -->
 <br>
 <a href="/account/tags">Edit categories</a>
 <br>

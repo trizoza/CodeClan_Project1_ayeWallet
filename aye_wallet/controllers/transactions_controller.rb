@@ -8,6 +8,11 @@ require_relative( '../models/user.rb' )
 
 get '/transactions' do
   @transactions = Transaction.all()
+  @tags = Tag.all()
+  if params[:tag_id]
+    @total_spent_by_tag = Transaction.total_spent_by_tag( params[:tag_id] )
+    @selected_tag = params[:tag_id].to_i
+  end
   erb ( :"transactions/index" )
 end
 

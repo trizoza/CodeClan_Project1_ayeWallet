@@ -27,6 +27,8 @@ transaction10 = Transaction.new({ "item" => "internet", "merchant" => "PlusNet",
 transaction10.save()
 transaction11 = Transaction.new({ "item" => "Xbox", "merchant" => "Trevies Tellies", "value" => 150, "tag_id" => 6, "year" => 2016, "month" => 12, "day" => 17 })
 transaction11.save()
+transaction12 = Transaction.new({ "item" => "dog", "merchant" => "Pet shop", "value" => 99, "tag_id" => 12, "year" => 2016, "month" => 11, "day" => 17 })
+transaction12.save()
 
 binding.pry
 nil
