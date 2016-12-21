@@ -62,6 +62,18 @@ class Transaction
     return total_spent_by_tag.to_f
   end
 
+  # def self.total_spent_by_tag_in_month(tag_id, month) 
+  #   tag_sql = "SELECT * FROM transactions WHERE tag_id = #{tag_id}"
+  #   month_sql = "SELECT * FROM transacttions WHERE month = #{month};"
+  #   tag_transactions = SqlRunner.run(tag_sql).map {|t| Transaction.new(t)}
+  #   month_transactions = SqlRunner.run(month_sql).map {|t| Transaction.new(t)}
+
+  #   shared_transactions = month_transactions.select { |t| tag_transactions.contains?(t) }
+
+  #   total = shared_transactions.inject(0) { |so_far, nxt| so_far + nxt.value }
+  #   return total.to_f
+  # end
+
   def tag()
     sql = "
       SELECT * FROM tags

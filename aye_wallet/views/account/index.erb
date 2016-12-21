@@ -2,29 +2,77 @@
 <br>
 <p> Monthly budget is set to <%= "%.2f" % @budget %> $. </p>
 <br>
-<p> Total value of all transactions is <%= "%.2f" % @total_spent.round(2) %> $. </p>
+<p> Total value of all-time transactions is <%= "%.2f" % @total_spent.round(2) %> $. </p>
 <br>
-  <% budget_use = @total_spent.to_f / @budget.to_f * 100 %>
-  <% if budget_use < 100 %>
-    <p>You have spent <%= budget_use.round(0) %>% of budget.</p>
-  <% else %>
-    <p id="warning"> You have exceeded the budget by <%= -(100 - budget_use.round(0)) %>% !</p>
-  <% end %>
+<p> Run the month analysis by choosing a month. </p>
 <br>
-<p> BUDGET BAR </p>
-<br>
-<div style="display: block; width: 100%; height: 30px; background-color: white; border-radius: 15px;">
-    <div style="display: block; width: 
-    <%= budget_use.round(0) < 101 ? budget_use.round(0) : 100 %>%;
-    height: 30px; border-radius: 15px; background-color: 
-    <%= "lightgreen" if budget_use.round(0) <= 50 %>
-    <%= "orange" if budget_use.round(0) <= 90 && budget_use.round(0) > 50 %>
-    <%= "red" if budget_use.round(0) > 90 %>
-    ;">
-    <p class="percentage"> <%= budget_use.round(0) %>% </p>
+<form action="/account" method="get">
+  <select name="month">
+    <% for month in (1..12)%>
+        <option <%= "selected" if @selected_month == month %> value = <%= month %> ><%= month %></option>
+    <% end %>
+  </select>
+  <input class="btn" type="submit" value="Choose month">
+</form>
+
+<% if @selected_month %>
+  <br> 
+  <p> 
+    You have spent <%= "%.2f" % @total_spent_by_month %>$ in <%= 
+    case @selected_month
+    when 1
+      "January"
+    when 2
+      "February"
+    when 3
+      "March"
+    when 4
+      "April"
+    when 5
+      "May"
+    when 6
+      "June"
+    when 7
+      "July"
+    when 8
+      "August"
+    when 9
+      "September"
+    when 10
+      "October"
+    when 11
+      "November"
+    else
+      "December"
+    end
+    %>.
+  </p>
+  <% if @total_spent_by_month > 0 %>
+    <br>
+      <% budget_use = @total_spent_by_month.to_f / @budget.to_f * 100 %>
+      <% if budget_use < 100 %>
+        <p>You have spent <%= budget_use.round(0) %>% of budget.</p>
+      <% else %>
+        <p id="warning"> You have exceeded the budget by <%= -(100 - budget_use.round(0)) %>% !</p>
+      <% end %>
+    <br>
+    <p> BUDGET BAR </p>
+    <br>
+    <div style="display: block; width: 100%; height: 30px; background-color: white; border-radius: 15px;">
+        <div style="display: block; width: 
+          <%= budget_use.round(0) < 101 ? budget_use.round(0) : 100 %>%;
+          height: 30px; border-radius: 15px; background-color: 
+          <%= "lightgreen" if budget_use.round(0) <= 50 %>
+          <%= "orange" if budget_use.round(0) <= 90 && budget_use.round(0) > 50 %>
+          <%= "red" if budget_use.round(0) > 90 %>
+          ;">
+          <p class="percentage"> <%= budget_use.round(0) %>% </p>
+        </div>
     </div>
-</div>
-<br>
+    
+  <% end %>
+<% end %>
+<!-- <br>
 <p> Check spending by category: </p>
 <br>
 <form action="/account" method="get">
@@ -42,6 +90,7 @@
     You have spent <%= "%.2f" % @total_spent_by_tag %> $ on <%= @selected_tag.category %>.
   </p>
 <% end %>
+<br> -->
 <br>
 <a href="/account/tags">Edit categories</a>
 <br>

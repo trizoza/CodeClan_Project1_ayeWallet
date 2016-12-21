@@ -8,7 +8,6 @@ require_relative( '../models/user.rb' )
 
 get '/transactions' do
   @transactions = Transaction.all()
-  @total_spent = Transaction.total_spent()
   erb ( :"transactions/index" )
 end
 

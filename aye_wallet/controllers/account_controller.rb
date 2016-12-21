@@ -11,9 +11,9 @@ get '/account' do
   @budget = User.check_budget()
   @tags = Tag.all()
   @total_spent = Transaction.total_spent()
-  if params[:tag_id]
-    @total_spent_by_tag = Transaction.total_spent_by_tag( params[:tag_id] )
-    @selected_tag = Tag.find(params[:tag_id]) 
+  if params[:month]
+    @total_spent_by_month = Transaction.total_spent_by_month( params[:month] )
+    @selected_month = params[:month].to_i
   end
   erb ( :"account/index" )
 end
