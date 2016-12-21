@@ -11,7 +11,7 @@
   <select name="tag_id">
     <% @tags.sort! { |tag1, tag2| tag1.id <=> tag2.id } %>
     <% for tag in @tags %>
-        <option value = <%= tag.id %> > <%= tag.category %> </option>
+        <option <%= "selected" if @selected_tag == tag.id %> value = <%= tag.id %> > <%= tag.category %> </option>
     <% end %>
   </select>
   <input class="btn" type="submit" value="Check category">
@@ -29,7 +29,7 @@
 <br>
 <p>All existing transactions:</p>
 <br>
-<table>
+<table class="transactions">
   <thead>
     <tr>
       <th scope=”col”>Date</th>
