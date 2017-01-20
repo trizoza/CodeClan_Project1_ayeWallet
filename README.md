@@ -1,5 +1,5 @@
 # CodeClan_Project_1_ayeWallet
-CodeClan Project1: Budgeting app built in Ruby, PSQL, Sinatra, HTML &amp; CSS
+CodeClan Project1: Budgeting web app built in Ruby, PSQL, Sinatra, HTML &amp; CSS
 
 case diagram: https://www.draw.io/#G0B7ijpS3yrR7lNjNxSzZWTTAyQzQ
 
