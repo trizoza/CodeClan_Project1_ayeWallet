@@ -28,9 +28,10 @@ Possible Extensions:
 - Any other ideas you might come up with
 
 ## To run follow:
+
 In terminal:
-1) createdb aye_wallet
-2) psql -d aye_wallet -f db/aye_wallet.sql
-3) !!! (to quit pry)
-4) ruby db/seeds.rb
-5) ruby controller.rb
+- createdb aye_wallet
+- psql -d aye_wallet -f db/aye_wallet.sql
+- !!! (to quit pry)
+- ruby db/seeds.rb
+- ruby controller.rb
