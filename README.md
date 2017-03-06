@@ -35,3 +35,6 @@ In terminal:
 - !!! (to quit pry)
 - ruby db/seeds.rb
 - ruby controller.rb
+
+In browser:
+- http://localhost:4567/
