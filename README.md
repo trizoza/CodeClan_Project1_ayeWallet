@@ -38,3 +38,14 @@ In terminal:
 
 In browser:
 - http://localhost:4567/
+
+## Screenshots
+
+![alt text](http://imgur.com/3zjHmoj.png)
+![alt text](http://imgur.com/TlbDI1F.png)
+![alt text](http://imgur.com/SeuZykr.png)
+![alt text](http://imgur.com/V5txwEx.png)
+![alt text](http://imgur.com/OirFdZS.png)
+![alt text](http://imgur.com/HrERv73.png)
+![alt text](http://imgur.com/9idYecH.png)
+
