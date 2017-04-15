@@ -16,7 +16,7 @@ You must be able to create new Transactions ( which should include a merchant na
 MVP:
 
 - Create new transactions
-- Display a list of all transactions
+- Display list of all transactions
 - Display total amount spent
 - Display total amount spent by tag
 
